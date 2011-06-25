@@ -44,6 +44,7 @@ h1 span {
 
 #description {
     font-style: italic;
+    text-align: right;
 }
 
 #signin {

@@ -48,7 +48,7 @@ class GitHubCallbackHandler(tornado.web.RequestHandler):
             user_id = unicode(user.id)
             
         self.set_secure_cookie('user_id', user_id, expires_days=365)
-        self.redirect('/')
+        self.redirect('/#publish')
         self.finish()
         
     def on_callback_response(self, response):
@@ -98,7 +98,7 @@ class TwitterHandler(BaseHandler, tornado.auth.TwitterMixin):
             user_id = unicode(user.id)
             
         self.set_secure_cookie('user_id', user_id, expires_days=365)
-        self.redirect('/')
+        self.redirect('/#publish')
         
     @tornado.web.asynchronous
     def get(self):

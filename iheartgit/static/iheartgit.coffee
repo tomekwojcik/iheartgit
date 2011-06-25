@@ -47,7 +47,7 @@ $(document).ready( ->
                 $('#publish div.loading').css('display', 'block')
             success: ->
                 $('textarea', form).val('')
-                window.location.reload()
+                window.location.href = window.location.href.replace('#publish', '')
             error: ajaxError
             complete: ->
                 $('#publish div.loading').css('display', 'none')
