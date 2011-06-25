@@ -51,6 +51,10 @@ h1 span {
     margin-top: 1em;
 }
 
+div.loading {
+    background: transparent url('ajax-loader.gif') no-repeat center center;
+}
+
 #publish p,
 #publish a {
     color: #333333;
@@ -102,6 +106,12 @@ div.message p.date {
     font-style: italic;
     margin-top: 0.5em;
     text-align: right;
+}
+
+#shouts div.loading {
+    margin-top: 1em;
+    height: 24px;
+    width: 100%;
 }
 
 #load-more {

@@ -5,6 +5,8 @@
         <link rel="stylesheet" type="text/css" href="{{ static_url('style.css') }}" />
         <title>I ♡ GIT</title>
         <meta name="robots" content="noindex, nofollow" />
+        <script type="text/javascript" src="{{ static_url('jquery-1.6.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ static_url('iheartgit.js') }}"></script>
     </head>
     <body>
         <div id="page">
@@ -23,12 +25,8 @@
             </div>
             
             <div id="shouts">
-                <div class="message">
-                    <p><img src="http://a3.twimg.com/profile_images/1264081725/eightbit-ef5ef7bf-bf8b-4c81-b4f6-0400f61d1766_normal.png" alt="" title="" /><a href="http://twitter.com/tomekwojcik" rel="nofollow">tomekwojcik</a> loves GIT because: It rocks! :)</p>
-                    <p class="date">1 hour ago</p>
-                </div>
-                
-                <p id="load-more"><a href="#">Load more</a></p>
+                <div class="loading"></div>
+                <p id="load-more"><a data-offset="0" href="#">Load more</a></p>
             </div>
             
             <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &bull; <a href="#">Fork me on GitHub</a></div>
