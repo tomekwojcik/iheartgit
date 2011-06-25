@@ -41,7 +41,7 @@ class ShoutsHandler(BaseHandler):
         except:
             offset = 0
         
-        shouts = Shout.objects().order_by('-created_at')[offset:offset + 1]
+        shouts = Shout.objects().order_by('-created_at')[offset:offset + 10]
                 
         response = []
         for shout in shouts:

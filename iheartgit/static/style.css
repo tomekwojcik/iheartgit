@@ -31,8 +31,8 @@ h1,
 }
 
 h1 {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 48px;
+    line-height: 64px;
     font-weight: normal;
     text-align: center;
 }
@@ -44,6 +44,18 @@ h1 span {
 
 #description {
     font-style: italic;
+}
+
+#signin {
+    color: #333333;
+    line-height: 1.5em;
+    margin-top: 14px;
+    text-align: center;
+}
+
+#signin a {
+    color: #333333;
+    font-weight: bold;
 }
 
 #publish {
