@@ -1,12 +1,14 @@
 $ = window.jQuery
 $(document).ready( ->
+    ajaxError = ->
+        alert('Communication error has occured. Sorry.')
     loadShouts = (offset=0) ->
         ajaxSuccess = (data) ->
             loader = $('#shouts div.loading')
             count = 0
-            $.each(data, (index, item) ->
-                if $("#shout-#{index}").length == 0
-                    html = """<div id="shout-#{index}" class="message">
+            $.each(data.shouts, (index, item) ->
+                if $("#shout-#{item.id}").length == 0
+                    html = """<div id="shout-#{item.id}" class="message">
                         <p><img src="#{item.user.avatar_url}" alt="" title="" /><a href="#{item.user.url}" rel="nofollow">#{item.user.nick}</a> loves GIT because: #{item.text}</p>
                         <p class="date">#{item.created_at}</p>
                     </div>"""
@@ -22,16 +24,48 @@ $(document).ready( ->
             beforeSend: ->
                 $('#shouts div.loading').css('display', 'block')
             success: ajaxSuccess,
-            error: ->
-                alert('Communication error has occured. Sorry.')
+            error: ajaxError
             complete: ->
                 $('#shouts div.loading').css('display', 'none')
         })
         
-    $('#load-more').bind('click', ->
-        loadShouts($('#load-more').attr('data-offset'));
+    sendShout = (event) ->
+        if event.which != 13
+            return true
+        
+        event.stopPropagation()
+        event.preventDefault()
+        
+        form = $('#publish form')
+        data = { text: $(event.target).val() }
+        $.ajax({
+            url: form.attr('action'),
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            before: ->
+                $('#publish div.loading').css('display', 'block')
+            success: ->
+                $('textarea', form).val('')
+                window.location.reload()
+            error: ajaxError
+            complete: ->
+                $('#publish div.loading').css('display', 'none')
+        })
+        
+        false
+        
+    $('#load-more a').bind('click', ->
+        loadShouts($('#load-more a').attr('data-offset'));
         false
     )
     
     loadShouts()
+    
+    if window.location.hash == '#publish'
+        $('#publish').css('display', 'block')
+        $('#publish textarea').bind('keydown', sendShout
+        )
+    else
+        $('#publish').empty()
 )

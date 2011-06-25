@@ -49,10 +49,11 @@ h1 span {
 #publish {
     display: none;
     margin-top: 1em;
+    position: relative;
 }
 
 div.loading {
-    background: transparent url('ajax-loader.gif') no-repeat center center;
+    background: #efefef url('ajax-loader.gif') no-repeat center center;
 }
 
 #publish p,
@@ -77,6 +78,16 @@ div.loading {
     margin-top: 6px;
     padding: 12px;
     width: 374px;
+}
+
+#publish div.loading {
+    display: none;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 div.message {
