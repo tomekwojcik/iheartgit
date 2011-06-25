@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="{{ static_url('style.css') }}" />
+        <title>I ♡ GIT</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <script type="text/javascript" src="{{ static_url('jquery-1.6.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ static_url('iheartgit.js') }}"></script>
+    </head>
+    <body>
+        <div id="page">
+            <h1>I <span>♡</span> GIT</h1>
+            {% if current_user == None %}
+                <p id="signin">Show the World you ♡ GIT.<br/><a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
+            {% else %}
+                <p id="description">Welcome back, {{ current_user.nick }} :).</p>
+            {% end %}
+            
+            <div id="publish">
+                <form action="/shouts" method="post">
+                    <p>I love GIT because:</p>
+                    <textarea name="text"></textarea>
+                </form>
+                <div class="loading"></div>
+            </div>
+            
+            <div id="shouts">
+                <div class="loading"></div>
+                <p id="load-more"><a data-offset="0" href="#">Load more</a></p>
+            </div>
+            
+            <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &bull; <a href="#">Fork me on GitHub</a></div>
+        </div>
+    </body>
+</html>

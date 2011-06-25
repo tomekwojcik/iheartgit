@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
-config = {
-    'debug': True
+
+# app_config holds configuration setting passed to tornado.web.Application instance.
+app_config = {
+    'debug': False,
+    'cookie_secret': '',
+    'twitter_consumer_key': '',
+    'twitter_consumer_secret': ''
 }
+
+MONGO_DB = 'iheartgit'
+
+GITHUB_ID = ''
+GITHUB_SECRET = ''
+GITHUB_CALLBACK = ''

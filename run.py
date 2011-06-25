@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import tornado.ioloop
-from config import config
+from config import app_config
 from iheartgit.app import create_app
 
-app = create_app(config)
+app = create_app(app_config)
 app.listen(5000)
 tornado.ioloop.IOLoop.instance().start()
