@@ -2,24 +2,36 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="{{ static_url('style.css') }}" />
         <title>I ♡ GIT</title>
+        <meta name="robots" content="noindex, nofollow" />
     </head>
     <body>
-        <h1>I ♡ GIT</h1>
-        {% if current_user == None %}
-            <p>Show the World you ♡ GIT. <a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
-        {% else %}
-            <p>Welcome back, {{ current_user.nick }} :).</p>
-        {% end %}
-        
-        <ul id="shouts">
-            <li>
-                <p><a href="http://twitter.com/tomekwojcik" rel="nofollow">tomekwojcik</a> loves GIT because: It rocks! :)</p>
-                <p><em>1 hour ago</em></p>
-            </li>
-            <li class="load-more"><a href="#">Load more</a></li>
-        </ul>
-        
-        <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &bull; <a href="#">Fork me on GitHub</a></div>
+        <div id="page">
+            <h1>I <span>♡</span> GIT</h1>
+            {% if current_user == None %}
+                <p>Show the World you ♡ GIT. <a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
+            {% else %}
+                <p id="description">Welcome back, {{ current_user.nick }} :).</p>
+            {% end %}
+            
+            <div id="publish">
+                <form action="/shouts/" method="post">
+                    <p>I love GIT because:</p>
+                    <textarea name="text"></textarea>
+                </form>
+            </div>
+            
+            <div id="shouts">
+                <div class="message">
+                    <p><img src="http://a3.twimg.com/profile_images/1264081725/eightbit-ef5ef7bf-bf8b-4c81-b4f6-0400f61d1766_normal.png" alt="" title="" /><a href="http://twitter.com/tomekwojcik" rel="nofollow">tomekwojcik</a> loves GIT because: It rocks! :)</p>
+                    <p class="date">1 hour ago</p>
+                </div>
+                
+                <p id="load-more"><a href="#">Load more</a></p>
+            </div>
+            
+            <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &bull; <a href="#">Fork me on GitHub</a></div>
+        </div>
     </body>
 </html>
