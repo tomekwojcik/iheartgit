@@ -9,6 +9,7 @@ routes = [
     (r'/oauth/github/callback', iheartgit.handlers.oauth.GitHubCallbackHandler),
     (r'/oauth/twitter/login', iheartgit.handlers.oauth.TwitterHandler),
     (r'/oauth/twitter/callback', iheartgit.handlers.oauth.TwitterHandler),
+    (r'/shouts', iheartgit.handlers.shouts.ShoutsHandler),
 ]
 
 def create_app(config=None):

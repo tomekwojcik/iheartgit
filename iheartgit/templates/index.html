@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>I ♡ GIT</title>
+    </head>
+    <body>
+        <h1>I ♡ GIT</h1>
+        {% if current_user == None %}
+            <p>Show the World you ♡ GIT. <a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
+        {% else %}
+            <p>Welcome back, {{ current_user.nick }} :).</p>
+        {% end %}
+        
+        <ul id="shouts">
+            <li>
+                <p><a href="http://twitter.com/tomekwojcik" rel="nofollow">tomekwojcik</a> loves GIT because: It rocks! :)</p>
+                <p><em>1 hour ago</em></p>
+            </li>
+            <li class="load-more"><a href="#">Load more</a></li>
+        </ul>
+        
+        <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &bull; <a href="#">Fork me on GitHub</a></div>
+    </body>
+</html>

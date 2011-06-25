@@ -17,16 +17,16 @@ class BaseHandler(tornado.web.RequestHandler):
             
             if user != None:
                 self.set_secure_cookie('user_id', user_id, expires_days=365)
+            else:
+                self.clear_cookie('user_id')
             return user
         else:
             return None
             
 import iheartgit.handlers.oauth
+import iheartgit.handlers.shouts
 
 class HelloWorldHandler(BaseHandler):
     def get(self):
-        if self.current_user != None:
-            self.write('Welcome back, %s!' % (self.current_user.nick, ))
-        else:
-            self.write('Hello, World!')
+        self.render('../templates/index.html')
             
