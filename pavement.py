@@ -28,3 +28,8 @@ def build():
     compile_coffeescripts()
     
     call_task("setuptools.command.build")
+    
+@task
+def install():
+    compile_coffeescripts()
+    call_task("setuptools.command.install")
