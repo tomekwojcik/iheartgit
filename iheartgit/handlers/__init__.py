@@ -27,6 +27,7 @@ import logging
 import config
 from mongoengine import connect
 from iheartgit.models.user import User
+from iheartgit.models.shout import Shout
 
 class BaseHandler(tornado.web.RequestHandler):
     """RequestHandler subclass that provides base for app's handlers."""
@@ -56,5 +57,6 @@ import iheartgit.handlers.shouts
 class IndexHandler(BaseHandler):
     """Handler for app's main page."""
     def get(self):
-        self.render('../templates/index.html')
+        shouts_count = Shout.objects().count()
+        self.render('../templates/index.html', shouts_count=shouts_count)
             

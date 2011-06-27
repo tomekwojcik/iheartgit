@@ -26,6 +26,7 @@ Use this script to run an instance of the app.
 
 import tornado.ioloop
 from config import app_config
+from optparse import OptionParser
 from iheartgit.app import create_app
 
 app = create_app(app_config)
