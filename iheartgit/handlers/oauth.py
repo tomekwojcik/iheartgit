@@ -1,4 +1,26 @@
 # -*- coding: utf-8 -*-
+#
+# Copyright (C) 2011 by Tomasz Wójcik <labs@tomekwojcik.pl>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+"""OAuth interface handlers."""
+
 import tornado.web
 import tornado.httpclient
 import tornado.auth
@@ -13,14 +35,18 @@ from iheartgit.models.user import User
 import logging
 
 class GitHubLoginHandler(BaseHandler):
+    """GitHub authorization redirect handler."""
     def get(self):
+        """Redirects the UA to GitHub authorization page."""
         if self.current_user != None:
             self.redirect('/')
         else:
             self.redirect('https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s' % (config.GITHUB_ID, config.GITHUB_CALLBACK))
         
 class GitHubCallbackHandler(tornado.web.RequestHandler):
+    """GitHub post-auth callback handler."""
     def on_profile_response(self, response):
+        """Handles user profile request response."""
         if response.error:
             self.send_error()
             
@@ -52,6 +78,7 @@ class GitHubCallbackHandler(tornado.web.RequestHandler):
         self.finish()
         
     def on_callback_response(self, response):
+        """Handles access token request response."""
         if response.error:
             self.send_error()
             
@@ -66,6 +93,7 @@ class GitHubCallbackHandler(tornado.web.RequestHandler):
     
     @tornado.web.asynchronous
     def get(self):
+        """GitHub OAuth callback handler."""
         body = {
             'client_id': config.GITHUB_ID,
             'client_secret': config.GITHUB_SECRET,
@@ -79,7 +107,9 @@ class GitHubCallbackHandler(tornado.web.RequestHandler):
         httpclient.fetch(request, self.on_callback_response)
         
 class TwitterHandler(BaseHandler, tornado.auth.TwitterMixin):
+    """Twitter authorization handler."""
     def on_profile_response(self, twitter_user):
+        """Handles user profile request response."""
         user_id = None
         current_user = User.objects(service='twitter', nick=twitter_user['username']).first()
         if current_user != None:
@@ -102,6 +132,7 @@ class TwitterHandler(BaseHandler, tornado.auth.TwitterMixin):
         
     @tornado.web.asynchronous
     def get(self):
+        """Redirects the UA to Twitter authorization page or acts as callback handler."""
         if self.current_user != None:
             self.redirect('/')
             self.finish()
