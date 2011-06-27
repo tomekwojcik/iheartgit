@@ -13,10 +13,7 @@ setup(
     packages=[ 'iheartgit', 'iheartgit.handlers', 'iheartgit.models' ],
     package_data={
         'iheartgit': [ 'static/ajax-loader.gif', 'static/iheartgit.js', 'static/jquery-1.6.1.min.js', 'static/style.css', 'templates/index.html' ]
-    },
-    install_requires=[
-        'tornado >= 2.0'
-    ]
+    }
 )
 
 
