@@ -11,7 +11,7 @@
     <body>
         <div id="page">
             <h1><a href="/" title="I ♡ GIT">I ♡ GIT</a></h1>
-            <div id="tweet-button">HERE BE TWEET BUTTON!</div>
+            <div id="tweet-button"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iheartgit.com/" data-text="I ♡ GIT" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
             <div id="content">
                 {% if current_user == None %}
                     <p id="signin"><strong>Show the World you <span>♡</span> GIT.</strong><br/><a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>

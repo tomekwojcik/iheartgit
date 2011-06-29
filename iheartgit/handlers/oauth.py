@@ -114,7 +114,7 @@ class TwitterHandler(BaseHandler, tornado.auth.TwitterMixin):
         current_user = User.objects(service='twitter', nick=twitter_user['username']).first()
         if current_user != None:
             user_id = unicode(current_user.id)
-            logging.info('Twitter user "%s" already signed up.' % (github_user['login'], ))
+            logging.info('Twitter user "%s" already signed up.' % (twitter_user['username'], ))
         else:
             user = User(service='twitter', nick=twitter_user['username'], url='http://twitter.com/' + twitter_user['username'], avatar_url=twitter_user['profile_image_url'])
             
