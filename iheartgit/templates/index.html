@@ -10,28 +10,29 @@
     </head>
     <body>
         <div id="page">
-            <h1>I <span>♡</span> GIT</h1>
-            {% if current_user == None %}
-                <p id="signin">Show the World you ♡ GIT.<br/><a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
-            {% else %}
-                <p id="description">Welcome back, {{ current_user.nick }} :).</p>
-            {% end %}
-            
-            <div id="publish">
-                <form action="/shouts" method="post">
-                    <p>I love GIT because:</p>
-                    <textarea name="text"></textarea>
-                </form>
-                <div class="loading"></div>
+            <h1><a href="/" title="I ♡ GIT">I ♡ GIT</a></h1>
+            <div id="tweet-button">HERE BE TWEET BUTTON!</div>
+            <div id="content">
+                {% if current_user == None %}
+                    <p id="signin"><strong>Show the World you <span>♡</span> GIT.</strong><br/><a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
+                {% else %}
+                    <p id="signin">Welcome back, {{ current_user.nick }} :).</p>
+                {% end %}
+                
+                <div id="publish">
+                    <form action="/shouts" method="post">
+                        <p class="header">I love GIT because:</p>
+                        <textarea name="text"></textarea>
+                        <div class="submit"><input type="submit" value="Send" /></div>
+                    </form>
+                </div>
+                
+                <div id="shouts">
+                    <p class="header">{{ shouts_count }} people ♡ GIT</p>
+                    <p id="load-more"><a data-offset="0" href="#">Load more</a></p>
+                </div>
             </div>
-            
-            <p>{{ shouts_count }} people ♡ GIT</p>
-            <div id="shouts">
-                <div class="loading"></div>
-                <p id="load-more"><a data-offset="0" href="#">Load more</a></p>
-            </div>
-            
-            <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &bull; <a href="https://github.com/tomekwojcik/iheartgit">Fork me on GitHub</a></div>
+            <div id="footer">I ♡ GIT by <a href="http://www.bthlabs.pl/">BTHLabs</a> &amp; <a href="#">dembsky</a> &bull; <a href="https://github.com/tomekwojcik/iheartgit">Fork me on GitHub</a></div>
         </div>
     </body>
 </html>

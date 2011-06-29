@@ -1,16 +1,22 @@
+/* =Cheap reset.
+-------------------------------------*/
 * {
     margin: 0px;
     padding: 0px;
 }
 
-body {
-    background: #f1f1f1;
-    color: #efefef;
-    font-family: arial;
-    font-size: 14px;
+img {
+    border: 0px none;
+}
+
+a,
+input,
+textarea {
+    outline: 0px none;
 }
 
 a {
+    color: #e4556a;
     text-decoration: none;
 }
 
@@ -18,139 +24,186 @@ a:hover {
     text-decoration: underline;
 }
 
-
-#page {
-    width: 400px;
-    margin: 20px auto;
+/* =Global styles.
+-------------------------------------*/
+body {
+    background: #ffffff url('img/body.png') repeat;
+    color: #383838;
+    font-family: "Lucida Grande", arial;
+    font-size: 12px;
 }
 
-h1,
-#description,
-#load-more a {
-    color: #333333;
+#page {
+    margin: 0px auto;
+    width: 482px;
 }
 
 h1 {
-    font-size: 48px;
-    line-height: 64px;
-    font-weight: normal;
-    text-align: center;
+    height: 73px;
+    margin: 22px auto;
+    overflow: hidden;
+    width: 266px;
 }
 
-h1 span {
-    color: #ff0000;
+h1 a {
+    background: transparent url('img/logo.png') no-repeat;
+    display: block;
+    height: 0px !important;
+    overflow: hidden;
+    padding-top: 73px;
+    width: 266px;
 }
 
-
-#description {
-    font-style: italic;
-    text-align: right;
+#content {
+    background: transparent url('img/content.png') repeat-y;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border: 1px solid #ced7de;
+    border-radius: 3px;
+    padding: 16px 27px;
+    width: 426px;
 }
 
+p.header {
+    color: #383838;
+    font-weight: bold;
+}
+
+/* =Sign in info.
+-------------------------------------*/
 #signin {
-    color: #333333;
-    line-height: 1.5em;
-    margin-top: 14px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 24px;
     text-align: center;
+}
+
+#signin span {
+    background: transparent url('img/heart.png') no-repeat;
+    display: inline-block;
+    height: 21px;
+    overflow: hidden;
+    position: relative;
+    text-indent: -1000px;
+    top: 4px;
+    margin: 0px 3px;
+    width: 23px;
 }
 
 #signin a {
-    color: #333333;
+    color: #000000;
     font-weight: bold;
 }
 
-#publish {
-    display: none;
-    margin-top: 1em;
-    position: relative;
+/* =Tweet button.
+-------------------------------------*/
+#tweet-button {
+    height: 20px;
+    margin: 0px 0px 22px 0px;
+    text-align: center;
 }
 
-div.loading {
-    background: #efefef url('ajax-loader.gif') no-repeat center center;
+/* =Publish form
+-------------------------------------*/
+#publish form {
+    margin: 0px auto;
+    width: 366px;
 }
 
-#publish p,
-#publish a {
-    color: #333333;
-}
-
-#publish a {
+textarea {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #f7f9fb;
+    border: 1px solid #ccd4dd;
+    border-radius: 3px;
+    color: #a5b0bd;
+    display: block;
+    font-family: "Lucida Grande", arial;
     font-size: 12px;
-    font-style: italic;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    padding: 10px;
+    width: 344px;
 }
 
-#publish span {
-    font-weight: bold;
-}
-
-#publish textarea {
-    -moz-border-radius: 12px;
-    border: 1px solid #333333;
-    border-radius: 12px;
-    color: #333333;
-    margin-top: 6px;
-    padding: 12px;
-    width: 374px;
-}
-
-#publish div.loading {
-    display: none;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-}
-
-div.message {
-    -moz-border-radius: 12px;
-    background: #333333;
-    border-radius: 12px;
-    line-height: 1.3em;
-    margin-top: 1em;
-    padding: 12px;
-}
-
-div.message img {
-    float: left;
-    margin-bottom: 0.5em;
-    margin-right: 0.5em;
-    max-width: 48px;
-}
-
-div.message a {
-    color: #d13072;
-    font-weight: bold;
-}
-
-div.message p.date {
-    clear: both;
-    font-size: 12px;
-    font-style: italic;
-    margin-top: 0.5em;
+#publish form div.submit {
     text-align: right;
 }
 
-#shouts div.loading {
-    margin-top: 1em;
-    height: 24px;
-    width: 100%;
+#publish form div.submit input {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border: 1px solid #bdc5ce;
+    background: #dbe2ea;
+    border-radius: 2px;
+    color: #87929f;
+    font-family: "Lucida Grande", arial;
+    font-size: 10px;
+    padding: 2px 8px;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+/* =Shouts.
+-------------------------------------*/
+#shouts {
+    background: transparent url('img/line-horizontal.png') no-repeat center top;
+    margin-top: 21px;
+    padding-top: 15px;
+}
+
+#shouts div.message {
+    background: transparent url('img/line-horizontal.png') no-repeat center bottom;
+    margin-top: 16px;
+    line-height: 1.3em;
+}
+
+#shouts div.message img {
+    display: block;
+    float: left;
+    margin-left: 23px;
+    max-width: 48px;
+}
+
+#shouts div.message p.message-text {
+    border-left: 1px solid #f3f3f3;
+    float: left;
+    margin-left: 23px;
+    padding-left: 22px;
+    width: 309px;
+}
+
+#shouts div.message p.message-text span {
+    color: #000000;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+#shouts div.message p.message-date {
+    clear: both;
+    font-size: 10px;
+    font-style: italic;
+    padding: 0.5em 0px 1.3em 0px;
+    text-align: right
 }
 
 #load-more {
-    margin-top: 1em;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 16px;
     text-align: center;
 }
 
+/* =Footer.
+-------------------------------------*/
 #footer {
-    color: #333333;
-    font-size: 10px;
-    margin-top: 14px;
+    color: #94a1a9;
+    margin: 22px 0px;
     text-align: center;
+    text-shadow: 0px 1px 0px #ffffff;
 }
 
 #footer a {
-    color: #333333;
-    font-style: italic;
+    color: #80939f;
+    font-weight: bold;
 }
