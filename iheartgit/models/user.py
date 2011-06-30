@@ -30,3 +30,4 @@ class User(Document):
     created_at = DateTimeField(default=datetime.now)
     url = StringField()
     avatar_url = StringField()
+    auth = DictField()

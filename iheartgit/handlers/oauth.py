@@ -115,8 +115,17 @@ class TwitterHandler(BaseHandler, tornado.auth.TwitterMixin):
         if current_user != None:
             user_id = unicode(current_user.id)
             logging.info('Twitter user "%s" already signed up.' % (twitter_user['username'], ))
+            if len(current_user.auth) == 0:
+                current_user.auth = twitter_user['access_token']
+                
+                try:
+                    current_user.save()
+                except:
+                    logging.exception('Could not update Twitter user auth token.')
+                    self.send_error
         else:
             user = User(service='twitter', nick=twitter_user['username'], url='http://twitter.com/' + twitter_user['username'], avatar_url=twitter_user['profile_image_url'])
+            user.auth = twitter_user['access_token']
             
             logging.info('Saving Twitter user "%s".' % (twitter_user['username'], ))
             try:
