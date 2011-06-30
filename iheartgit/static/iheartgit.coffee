@@ -46,7 +46,7 @@ $(document).ready( ->
             type: 'POST',
             data: data,
             dataType: 'json',
-            before: ->
+            beforeSend: ->
                 $('input[type=submit]', form).val('Just a sec...')
             success: ->
                 $('textarea', form).val('')

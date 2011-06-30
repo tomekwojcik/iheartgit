@@ -36,6 +36,9 @@ class ShoutsHandler(BaseHandler):
         except:
             return '?'
         
+        if timedelta.days > 0:
+            return date.strftime('%a %d, %Y %H:%M')
+        
         if timedelta.seconds < 5:
             return 'Just now'
             
@@ -52,14 +55,11 @@ class ShoutsHandler(BaseHandler):
                 plural = 's'
             return '%d minute%s ago' % (minutes_ago, plural)
             
-        if timedelta.seconds < 86400:
-            hours_ago = int(round(timedelta.seconds / 3600.0))
-            plural = ''
-            if hours_ago > 1:
-                plural = 's'
-            return '%d hour%s ago' % (hours_ago, plural)
-            
-        return date.strftime('%a %d, %Y %H:%M')
+        hours_ago = int(round(timedelta.seconds / 3600.0))
+        plural = ''
+        if hours_ago > 1:
+            plural = 's'
+        return '%d hour%s ago' % (hours_ago, plural)
             
     def get(self):
         """Fetches 10 shouts and returns them as JSON.
