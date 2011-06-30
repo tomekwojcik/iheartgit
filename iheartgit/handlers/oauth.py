@@ -115,7 +115,7 @@ class TwitterHandler(BaseHandler, tornado.auth.TwitterMixin):
         if current_user != None:
             user_id = unicode(current_user.id)
             logging.info('Twitter user "%s" already signed up.' % (twitter_user['username'], ))
-            if len(current_user.auth) == 0:
+            if len(current_user.auth) == 0 or current_user.auth['key'] != twitter_user['access_token']['key']:
                 current_user.auth = twitter_user['access_token']
                 
                 try:
