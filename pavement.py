@@ -1,35 +1,31 @@
 # -*- coding: utf-8 -*-
+#
+# Copyright (C) 2011 by Tomasz Wójcik <labs@tomekwojcik.pl>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+
 from paver.easy import *
 from paver.setuputils import setup
 import os
 
-setup(
-    name='iheartgit',
-    version='1.0b1',
-    description='Web application that powers http://iheartgit.com/',
-    author='Tomek Wójcik',
-    author_email='labs@tomekwojcik.pl',
-    url='http://www.bthlabs.pl/',
-    packages=[ 'iheartgit', 'iheartgit.handlers', 'iheartgit.models' ],
-    package_data={
-        'iheartgit': [ 'static/ajax-loader.gif', 'static/iheartgit.js', 'static/jquery-1.6.1.min.js', 'static/style.css', 'templates/index.html' ]
-    }
-)
-
-
+@task
 def compile_coffeescripts():
     exit_status = os.system('coffee -c -o %s %s' % (path('iheartgit') / 'static', path('iheartgit') / 'static' / 'iheartgit.coffee'))
         
     if exit_status != 0:
         raise RuntimeError('Failed to compile CoffeeScripts.')
-
-@task
-def build():
-    compile_coffeescripts()
-    
-    call_task("setuptools.command.build")
-    
-@task
-def install():
-    compile_coffeescripts()
-    call_task("setuptools.command.install")
