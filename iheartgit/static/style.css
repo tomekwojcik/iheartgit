@@ -110,7 +110,7 @@ p.header {
     width: 366px;
 }
 
-textarea {
+#publish form textarea {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     background: #f7f9fb;
