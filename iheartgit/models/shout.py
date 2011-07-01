@@ -30,3 +30,7 @@ class Shout(Document):
     user = ReferenceField(User)
     text = StringField(max_length=140)
     created_at = DateTimeField(default=datetime.now)
+    
+    meta = {
+        'indexes': [ '-created_at' ]
+    }
