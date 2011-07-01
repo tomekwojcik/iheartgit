@@ -105,9 +105,25 @@ p.header {
 
 /* =Publish form
 -------------------------------------*/
+#publish {
+    margin-top: 21px;
+}
+
 #publish form {
     margin: 0px auto;
+    position: relative;
     width: 366px;
+}
+
+#publish form p.counter {
+    color: #ccd4dd;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+#publish form p.counter.error {
+    color: #e4556a;
 }
 
 #publish form textarea {

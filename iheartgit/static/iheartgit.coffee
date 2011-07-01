@@ -39,8 +39,12 @@ $(document).ready( ->
         if isPosting == true
             return false
         
+        text = $('textarea', form).val()
+        if text.length > 140
+            return false
+            
         form = $('#publish form')
-        data = { text: $('textarea', form).val() }
+        data = { text: text }
         $.ajax({
             url: form.attr('action'),
             type: 'POST',
@@ -64,6 +68,7 @@ $(document).ready( ->
     loadShouts()
     
     if window.location.hash == '#publish'
+        charsCounter = $('#publish form p.counter')
         $('#publish').css('display', 'block')
         $('#publish textarea').bind('keydown', (event) ->
             if event.which != 13
@@ -75,6 +80,13 @@ $(document).ready( ->
             sendShout()
             
             false
+        ).bind('keyup', (event) ->
+            shoutLength = $(event.target).val().length
+            if shoutLength > 140
+                charsCounter.addClass('error')
+            else
+                charsCounter.removeClass('error')
+            charsCounter.text($(event.target).val().length)
         )
         $('#publish form').bind('submit', (event) ->
             event.stopPropagation()
