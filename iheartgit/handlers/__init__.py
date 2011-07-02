@@ -58,5 +58,5 @@ class IndexHandler(BaseHandler):
     """Handler for app's main page."""
     def get(self):
         shouts_count = Shout.objects().count()
-        self.render('../templates/index.html', shouts_count=shouts_count)
+        self.render('../templates/index.html', shouts_count=shouts_count, ga_id=config.GOOGLE_ANALYTICS_ID)
             

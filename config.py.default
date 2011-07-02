@@ -30,6 +30,8 @@ app_config = {
     'twitter_consumer_secret': ''
 }
 
+GOOGLE_ANALYTICS_ID = None
+
 MONGO_DB = 'iheartgit'
 
 GITHUB_ID = ''
