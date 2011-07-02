@@ -6,11 +6,12 @@
         <title>I ♡ GIT</title>
         <script type="text/javascript" src="{{ static_url('jquery-1.6.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ static_url('iheartgit.js') }}"></script>
+        <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     </head>
     <body>
         <div id="page">
             <h1><a href="/" title="I ♡ GIT">I ♡ GIT</a></h1>
-            <div id="tweet-button"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iheartgit.com/" data-text="I ♡ GIT" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+            <div id="tweet-button"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iheartgit.com/" data-text="I ♡ GIT" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script><g:plusone size="medium"></g:plusone></div>
             <div id="content">
                 {% if current_user == None %}
                     <p id="signin"><strong>Show the World you <span>♡</span> GIT.</strong><br/><a href="/oauth/github/login">Sign in with GitHub</a> or <a href="/oauth/twitter/login">Sign in with Twitter</a></p>
