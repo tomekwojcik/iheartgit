@@ -21,7 +21,7 @@ I strongly advise running the app in virtualenv.
 1.  Use Paver to compile the CoffeeScript file or do it manually.
 1.  Copy config.py.default to config.py.
 1.  Edit config.py.
-1.  python run.py -p &lt;port&gt;
+1.  `python run.py -p <port>`
 
 Credits
 -
