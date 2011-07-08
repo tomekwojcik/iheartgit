@@ -42,9 +42,16 @@ def create_app(config=None):
         raise RuntimeError('No configuration given.')
         
     config['static_path'] = os.path.join(os.path.dirname(__file__), 'static')
-        
+    
+    logging_config = {
+        'format': "%(asctime)s %(name)s <%(levelname)s>: %(message)s",
+        'level': logging.INFO
+    }
+    
     if config.get('debug', False):
-        logging.basicConfig(level=logging.DEBUG)
+        logging_config['level'] = logging.DEBUG
+        
+    logging.basicConfig(**logging_config)
     
     app = tornado.web.Application(routes, **config)
     

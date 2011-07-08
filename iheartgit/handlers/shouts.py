@@ -37,7 +37,7 @@ class ShoutsHandler(BaseHandler):
             return '?'
         
         if timedelta.days > 0:
-            return date.strftime('%a %d, %Y %H:%M')
+            return date.strftime('%a, %b %d, %Y %H:%M %z')
         
         if timedelta.seconds < 5:
             return 'Just now'
